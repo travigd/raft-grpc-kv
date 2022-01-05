@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package me.travisty.raft_grpc_kv.api.v1;
+
+option go_package = "github.com/travigd/raft-grpc-kv/api/v1;api";
+
+service KV {
+  rpc Get(GetRequest) returns (GetResponse) {}
+  rpc Set(SetRequest) returns (SetResponse) {}
+  rpc Join(JoinRequest) returns (JoinResponse) {}
+}
+
+message GetRequest {
+  string key = 1;
+}
+message GetResponse {
+  string value = 1;
+}
+
+message SetRequest {
+  string key = 1;
+  string value = 2;
+}
+message SetResponse {}
+
+message JoinRequest {
+  string id = 1;
+  string address = 2;
+}
+message JoinResponse {}
